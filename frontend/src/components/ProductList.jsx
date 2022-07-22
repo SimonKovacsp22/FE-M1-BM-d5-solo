@@ -8,7 +8,8 @@ export const getURL = "http://localhost:3002/products"
 export const getProducts = async (endPoint) =>{
   try{
   const response = await fetch(endPoint)
-  const data =await response.json()
+  const data = await response.json()
+  
   
   return data
 
@@ -22,13 +23,15 @@ function ProductList() {
 
     const [products,setProducts] = useState([])
 
+    
+
     useEffect(()=>{
   getProducts(getURL).then( (productsData)=> setProducts (productsData) )
     },[])
 
   return (
     <Row>
-       {/* {products.map((product) => (
+       {products.map((product) => (
         <Col key={product.product_id}
           md={4}
           style={{
@@ -37,7 +40,7 @@ function ProductList() {
         >
           <Product  {...product} />
         </Col>
-      ))} */}
+      ))}
     </Row>
 
    
