@@ -4,7 +4,7 @@ import {Row,Col,} from 'react-bootstrap'
 import { getProducts } from '../utilities/api-functions'
 
 
-export const getURL = "https://bem-products-july22.herokuapp.com/products"
+export const getURL = process.env.REACT_APP_BE_URL
 
 
 
