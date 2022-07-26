@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import {Form,Button} from 'react-bootstrap'
 import { postProduct,handleFileSend } from '../utilities/api-functions'
 
-const postProductUrl = 'http://localhost:3002/products'
+const postProductUrl = process.env.REACT_APP_BE_URL
 
 
 const sampleProduct = {
