@@ -1,23 +1,12 @@
 import {useState,useEffect} from 'react'
 import Product from './Product'
 import {Row,Col,} from 'react-bootstrap'
+import { getProducts } from '../utilities/api-functions'
 
 
-export const getURL = "http://localhost:3002/products"
+export const getURL = "https://bem-products-july22.herokuapp.com/products"
 
-export const getProducts = async (endPoint) =>{
-  try{
-  const response = await fetch(endPoint)
-  const data = await response.json()
-  
-  
-  return data
 
-  } catch (error) {
-    console.log(error)
-  }
-   
-}
 
 function ProductList() {
 
