@@ -19,7 +19,7 @@ import {
         onError: (error) => {
           console.log(error);
         },
-        secretKey: process.env.REACT_APP_KEY,
+        secretKey: "power of dog",
       }),
     ],
   };
