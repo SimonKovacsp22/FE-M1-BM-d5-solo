@@ -1,27 +1,44 @@
 import React,{useEffect} from 'react'
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
 import { getSingleProduct } from '../utilities/api-functions';
+import { getSingleProductActionWithThunk } from '../redux/actions';
 import Product from './Product';
+
+
 
 
 
 function ProductDetail() {
 
     const params = useParams();
-    const [product,setProduct] = useState({})
+
+
+
+    const dispatch = useDispatch()
+    
+    
+
+    
 
     useEffect(()=>{
         const {product_id} = params
-        const singleProductUrl = "http://localhost:3002/products/" + product_id
+       dispatch(getSingleProductActionWithThunk(product_id))
        
-        getSingleProduct(singleProductUrl).then(product => setProduct(product))
+       
+        
     },[])
+
+ 
 
   return (
     <Container>
-        <Product {...product} />
+      
+      <Product   />
+     
+        
         </Container>
   )
 }

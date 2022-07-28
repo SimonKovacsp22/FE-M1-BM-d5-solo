@@ -28,6 +28,10 @@ border-radius: 10px;
   margin-right: .25rem;
 }
 
+.ms-5 {
+  margin-left: 3rem;
+}
+
 .new-product-form .form-label {
   font-weight: 500;
   margin-left: 1rem;

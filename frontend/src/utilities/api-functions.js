@@ -54,3 +54,24 @@ export const getProducts = async (endPoint) =>{
     body.append("product_img",selectedFile)
     await fetch("http://localhost:3002/files/imageUrl/" + id,{method:'POST',body})
   }
+
+
+  export const updateProduct = async (data,endPoint) =>{
+    try{
+    const response =await fetch(endPoint,{
+        method:'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    },
+
+    )
+    return await response.json()
+   
+  
+    } catch (error) {
+      console.log(error)
+    }
+     
+  }

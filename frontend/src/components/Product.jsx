@@ -1,39 +1,57 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation,Link } from 'react-router-dom'
 import {Card,Button} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import {  } from 'react-router-dom'
+import { useState,useEffect } from 'react'
 import EditProductForm from './EditProductForm'
+import { useSelector } from 'react-redux'
+
+
 
 function Product(props) {
+  const product =useSelector(state=>state.update.updated)
+  const {price,category,product_id,name,description,brand,imageUrl} = props 
+  
+  const [isEditing,setIsEditing] = useState(false)
+  const location = useLocation()
+  const [data,setData] = useState(product)
 
-   const [isEditing,setIsEditing] = useState(false)
+  useEffect(()=>{
+    setData(prevData=>{
+      if(prevData!==data) return data
+      
+    }) 
 
-    const {price,category,product_id,name,description,brand,imageUrl} = props
-    const location = useLocation()
+  },[data])
+  
+
+   
   return (
     <div className='d-flex justify-content-between mt-5'>
     <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={imageUrl} />
+  <Card.Img variant="top" src={imageUrl || data.imageUrl} />
   <Card.Body>
-    <Card.Title>{name}</Card.Title>
-    <p>{category}</p>
-    <p>{brand}</p>
+    <Card.Title>{name || data.name}</Card.Title>
+    <p>{category || data.category}</p>
+    <p>{brand || data.brand}</p>
     <Card.Text>
-      {description}
+      {description || data.description}
     </Card.Text>
+    <p>{price || data.price} $</p>
     {location.pathname==="/" ? <Link
-    to={"/" + product_id}
-    ><Button variant="primary">Detail</Button></Link>
-  :<Button
+    to={"/" + product_id }
+    >
+      
+      <Button className='mb-2' variant="primary">Detail</Button></Link>
+  :<Button className='mb-2'
   onClick={()=> setIsEditing(true)}
   variant="dark">Edit</Button>
   }
-    <span>{price}</span>
+    
   </Card.Body>
 </Card>
 
-{isEditing && <EditProductForm/>}
+{isEditing && <EditProductForm  />}
 </div>
   )
 }

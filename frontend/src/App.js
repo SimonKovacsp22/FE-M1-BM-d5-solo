@@ -9,8 +9,10 @@ import NavbarTop from './components/Navbar';
 
 function App() {
   return (
+    <>
+    <NavbarTop/>
     <Container>
-      <NavbarTop/>
+     
 
       <Routes>
       <Route path="/" element={<ProductList/>} />
@@ -19,6 +21,7 @@ function App() {
       <Route path="/reviews/:review_id" element={<Review />} />
     </Routes>
     </Container>
+    </>
   );
 }
 
