@@ -9,37 +9,32 @@ import { useSelector } from 'react-redux'
 
 
 function Product(props) {
-  const product =useSelector(state=>state.update.updated)
-  const {price,category,product_id,name,description,brand,imageUrl} = props 
+  
+  const {price,category,_id,name,description,brand,imageUrl} = props 
+
   
   const [isEditing,setIsEditing] = useState(false)
   const location = useLocation()
-  const [data,setData] = useState(product)
+ 
 
-  useEffect(()=>{
-    setData(prevData=>{
-      if(prevData!==data) return data
-      
-    }) 
 
-  },[data])
   
 
    
   return (
     <div className='d-flex justify-content-between mt-5'>
     <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={imageUrl || data.imageUrl} />
+  <Card.Img variant="top" src={imageUrl } />
   <Card.Body>
-    <Card.Title>{name || data.name}</Card.Title>
-    <p>{category || data.category}</p>
-    <p>{brand || data.brand}</p>
+    <Card.Title>{name }</Card.Title>
+    <p>{category }</p>
+    <p>{brand }</p>
     <Card.Text>
-      {description || data.description}
+      {description }
     </Card.Text>
-    <p>{price || data.price} $</p>
+    <p>{price } $</p>
     {location.pathname==="/" ? <Link
-    to={"/" + product_id }
+    to={"/" + _id }
     >
       
       <Button className='mb-2' variant="primary">Detail</Button></Link>
